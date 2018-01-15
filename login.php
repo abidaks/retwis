@@ -18,6 +18,7 @@ if ($realpassword != $password)
 
 # Username / password OK, set the cookie and redirect to index.php
 $authsecret = $r->hget("user:$userid","auth");
+$r->hset("auths",$authsecret,$userid);
 setcookie("auth",$authsecret,time()+3600*24*365);
 header("Location: index.php");
 ?>
